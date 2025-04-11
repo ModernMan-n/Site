@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Личный кабинет</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    body{
+      display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    }
+  </style>
+</head>
+<body>
+    <header>
+      <a href="../" class="logo_link"><h1>Мой Сайт</h1></a>
+      <% if (user) { %>
+        <div class="user-info">
+          <a href="/profile">
+              <img src="<%= user.photo %>" alt="User Photo" style="width: 35px; height: 35px; border-radius: 50%;">
+          </a>
+        </div>
+      <% } else { %>
+        <div class="auth-buttons">
+          <a href="/auth/google">
+            <img src="../public/images/25555-middle.png" alt="Google Logo">
+          </a>
+          <a href="/auth/vk">
+            <img src="../public/images/800px_Vk_logo.svg.png" alt="VK Logo">
+          </a>
+        </div>
+      <% } %>
+    </header>
+  
+    <div class="topup-container">
+        <h2>Пополнить баланс</h2>
+        <form action="/payment/topup" method="POST">
+            <input type="number" name="amount" min="10" placeholder="Введите сумму (₽)" required />
+            <button type="submit">Пополнить</button>
+        </form>
+    </div>
+  
+    <footer>
+      <p>© 2025 Мой Сайт. Все права защищены.</p>
+    </footer>
+  </body>
+</html>

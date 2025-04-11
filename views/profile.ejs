@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Личный кабинет</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+      <a href="../" class="logo_link"><h1>Мой Сайт</h1></a>
+      <% if (user) { %>
+        <div class="user-info">
+          <a href="/profile">
+              <img src="<%= user.photo %>" alt="User Photo" style="width: 35px; height: 35px; border-radius: 50%;">
+          </a>
+        </div>
+      <% } else { %>
+        <div class="auth-buttons">
+          <a href="/auth/google">
+            <img src="../public/images/25555-middle.png" alt="Google Logo">
+          </a>
+          <a href="/auth/vk">
+            <img src="../public/images/800px_Vk_logo.svg.png" alt="VK Logo">
+          </a>
+        </div>
+      <% } %>
+    </header>
+  
+    <div class="container">
+      <h1>👤 Личный кабинет</h1>
+
+      <div class="card">
+        <img src="<%= user.photo %>" alt="Аватар" class="avatar" />
+        <h2><%= user.displayName %></h2>
+        <p><strong>ID:</strong> <%= user.id %></p>
+        <p><strong>Баланс:</strong> <%= user.balance %> ₽</p>
+        <div class="two_column">
+          <a href="/payment/topup" class="btn">Пополнить баланс</a>
+          <a href="/logout" class="btn">Выйти</a>
+        </div>
+      </div>
+        
+        
+          
+    </div>
+  
+    <footer>
+      <p>© 2025 Мой Сайт. Все права защищены.</p>
+    </footer>
+  </body>
+</html>
